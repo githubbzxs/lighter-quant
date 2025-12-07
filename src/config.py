@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from typing import List, Optional
 import yaml
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 
 class PathConfig(BaseModel):
@@ -32,9 +32,9 @@ class LighterConfig(BaseModel):
     api_secret: Optional[str] = None
     account_index: int = 0
     fee_rate: float = 0.0
-    @validator("api_key", "api_secret", pre=True, always=True)
-    def fill_env(cls, v, field):
-        env_key = f"LIGHTER_{field.name.upper()}"
+    @field_validator("api_key", "api_secret", mode="before")
+    def fill_env(cls, v, info):
+        env_key = f"LIGHTER_{info.field_name.upper()}"
         return v or os.getenv(env_key)
 
 
