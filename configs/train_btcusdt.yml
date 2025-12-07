@@ -1,0 +1,29 @@
+app:
+  log_level: INFO
+paths:
+  data_dir: data
+  models_dir: models
+  log_dir: logs
+  cache_dir: data/cache
+binance:
+  symbol: BTCUSDT
+train:
+  model_type: random_forest
+  model_params:
+    n_estimators: 200
+    max_depth: 8
+    n_jobs: -1
+  train_ratio: 0.8
+  model_output: models/orderbook_model.joblib
+dataset:
+  input_paths:
+    - data/BTCUSDT_sample.csv
+  output_path: data/processed/dataset.pkl
+  sample_interval_ms: 100
+  top_levels: 10
+  agg_depths: [5, 10]
+  lag_steps: [1, 5, 10, 50]
+  future_horizon: 10
+  up_threshold: 0.0005
+  down_threshold: -0.0005
+  label_mode: triple

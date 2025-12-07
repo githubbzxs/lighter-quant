@@ -1,0 +1,24 @@
+app:
+  log_level: INFO
+paths:
+  data_dir: data
+  models_dir: models
+  log_dir: logs
+  cache_dir: data/cache
+binance:
+  symbol: BTCUSDT
+  depth_limit: 50
+  rest_base: https://fapi.binance.com
+  ws_base: wss://fstream.binance.com
+  stream_interval: 100ms
+dataset:
+  input_paths: []
+  output_path: data/processed/dataset.pkl
+  sample_interval_ms: 100
+  top_levels: 10
+  agg_depths: [5, 10]
+  lag_steps: [1, 5, 10, 50]
+  future_horizon: 10
+  up_threshold: 0.0005
+  down_threshold: -0.0005
+  label_mode: triple

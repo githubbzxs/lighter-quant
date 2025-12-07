@@ -1,0 +1,29 @@
+app:
+  log_level: INFO
+paths:
+  data_dir: data
+  models_dir: models
+  log_dir: logs
+  cache_dir: data/cache
+binance:
+  symbol: BTCUSDT
+  depth_limit: 50
+  rest_base: https://fapi.binance.com
+  ws_base: wss://fstream.binance.com
+  stream_interval: 100ms
+lighter:
+  base_url: https://mainnet.zklighter.elliot.ai
+  account_index: 0
+  fee_rate: 0.0
+live:
+  model_path: models/orderbook_model.joblib
+  max_position: 0.01
+  max_single_loss: -0.002
+  max_daily_loss: -0.01
+  p_buy: 0.55
+  p_sell: 0.55
+  hold_ticks: 20
+  stop_loss: -0.003
+  take_profit: 0.003
+  slippage: 0.0
+  fee_rate: 0.0

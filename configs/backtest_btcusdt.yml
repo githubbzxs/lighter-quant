@@ -1,0 +1,24 @@
+app:
+  log_level: INFO
+paths:
+  data_dir: data
+  models_dir: models
+  log_dir: logs
+  cache_dir: data/cache
+binance:
+  symbol: BTCUSDT
+backtest:
+  dataset_path: data/processed/dataset.pkl
+  model_path: models/orderbook_model.joblib
+  p_buy: 0.55
+  p_sell: 0.55
+  hold_ticks: 20
+  stop_loss: -0.003
+  take_profit: 0.003
+  slippage: 0.0
+  fee_rate: 0.0
+  plot_dir: data/plots
+  grid:
+    p_buy: [0.52, 0.55, 0.6]
+    p_sell: [0.52, 0.55, 0.6]
+    hold_ticks: [10, 20, 30]
